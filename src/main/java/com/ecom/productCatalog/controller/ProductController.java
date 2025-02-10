@@ -3,10 +3,7 @@ package com.ecom.productCatalog.controller;
 import com.ecom.productCatalog.model.Product;
 import com.ecom.productCatalog.repository.ProductRepository;
 import com.ecom.productCatalog.service.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +23,12 @@ public class ProductController {
     }
 
     @GetMapping("/category/{categoryId}")
-    public List<Product> getAAProductsByCategory(@PathVariable Long categoryId){
+    public List<Product> getProductsByCategory(@PathVariable Long categoryId){
         return productService.getProductByCategory(categoryId);
+    }
+
+    @PostMapping("/create")
+    public Product createProduct(@RequestBody Product product) {
+        return productService.createProduct(product);
     }
 }

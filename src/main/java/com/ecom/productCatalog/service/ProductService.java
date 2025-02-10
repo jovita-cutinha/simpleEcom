@@ -22,4 +22,8 @@ public class ProductService {
     public List<Product> getProductByCategory(Long categoryId) {
         return productRepository.findByCategoryId(categoryId);
     }
+
+    public Product createProduct(Product product) {
+        return productRepository.save(product);
+    }
 }
