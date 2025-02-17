@@ -1,6 +1,7 @@
 package com.ecom.productCatalog.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +20,11 @@ public class Category {
                 cascade= CascadeType.ALL,
                 fetch = FetchType.LAZY)
     private Set<Product> products;
+
+    public Category(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Long getId() {
         return id;

@@ -1,6 +1,7 @@
 package com.ecom.productCatalog.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Entity
@@ -16,6 +17,15 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category-id", nullable = false)
     private Category category;
+
+    public Product(Long id, String name, String description, String imageUrl, Double price, Category category) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.price = price;
+        this.category = category;
+    }
 
     public Long getId() {
         return id;
@@ -64,4 +74,5 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
+
 }
